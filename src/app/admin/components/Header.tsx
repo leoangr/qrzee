@@ -7,7 +7,6 @@ import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import { FiGrid } from "react-icons/fi";
 import { PiSignOut } from "react-icons/pi";
 import { IoCloseOutline } from "react-icons/io5";
-import { logout } from "../../../actions/logout";
 import { usePathname, useRouter } from "next/navigation";
 import ConfirmModal from "../../../components/ConfirmModal";
 
@@ -23,15 +22,24 @@ export default function Header({email, menuBar, setMenubar} : HeaderProps ) {
     const router = useRouter()
     const [menuActive, setMenuActive] = useState('dashboard')
     const [confirmOpen, setConfirmOpen] = useState(false);
+    const endpoint = process.env.NEXT_PUBLIC_API_URL
 
     const handleLogout = () => {
         setConfirmOpen(true);
     }
 
-    const onConfirmLogout = () => {
-        logout();
-        router.push('/');
-        setConfirmOpen(false);
+    const onConfirmLogout = async () => {
+        
+        try {
+            await fetch(`${endpoint}/api/auth/logout`, {
+                method: "POST",
+                credentials: "include",
+            });
+            router.push('/');
+            setConfirmOpen(false);
+        } catch (error) {
+            console.error(error)
+        }
     };
 
     const onCancelLogout = () => {
