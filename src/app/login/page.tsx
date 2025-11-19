@@ -1,8 +1,3 @@
-export const metadata = {
-  title: "Login",
-  description: "Login to access your QRzee account and manage QR codes.",
-}
-
 import { LoginForm } from "../../components/login-form"
 import Navbar from "../../components/Navbar"
 

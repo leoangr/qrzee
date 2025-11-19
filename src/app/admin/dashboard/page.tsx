@@ -1,12 +1,3 @@
-export const metadata = {
-  title: "Dashboard",
-  description: "Manage your QR codes and account settings in QRzee admin dashboard.",
-  robots: {
-      index: false, 
-      follow: false,
-  }
-}
-
 'use client'
 
 import { useRouter } from "next/navigation";

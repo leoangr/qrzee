@@ -1,12 +1,3 @@
-export const metadata = {
-  title: "Profile",
-    description: "Update your profile information and settings.",
-    robots: {
-        index: false, 
-        follow: false,
-    }
-}
-
 'use client'
 
 import { useRouter } from "next/navigation";
